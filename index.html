@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Dunia Coding - Hatsune Miku</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- WELCOME SCREEN -->
+<div id="welcome" class="welcome">
+  <h1>SELAMAT DATANG<br>DI DUNIA CODING</h1>
+  <button onclick="startPresentation()">Mulai Materi</button>
+</div>
+
+<!-- SLIDES -->
+<div class="slides hidden">
+
+  <!-- Slide 1 -->
+  <section class="slide active">
+    <div class="text">
+      <h1>Apa Itu Coding?</h1>
+      <p>
+        Coding adalah cara memberi perintah ke komputer
+        menggunakan bahasa yang dimengerti mesin.
+      </p>
+    </div>
+    <img class="image" src="images/miku.png">
+  </section>
+
+  <!-- Slide 2 -->
+  <section class="slide">
+    <div class="text">
+      <h1>Dunia Coding Web</h1>
+      <ul>
+        <li>HTML → Struktur</li>
+        <li>CSS → Tampilan</li>
+        <li>JavaScript → Interaksi</li>
+      </ul>
+    </div>
+    <img class="image" src="images/miku2.png">
+  </section>
+
+  <!-- Slide 3 -->
+  <section class="slide">
+    <div class="text">
+      <h1>HTML</h1>
+      <p>HTML digunakan untuk membuat kerangka website.</p>
+
+<pre class="code">
+&lt;h1&gt;Judul&lt;/h1&gt;
+&lt;p&gt;Paragraf&lt;/p&gt;
+</pre>
+    </div>
+    <img class="image" src="images/miku2.png">
+  </section>
+
+  <!-- Slide 4 -->
+  <section class="slide">
+    <div class="text">
+      <h1>Apa Itu &lt;div&gt;?</h1>
+      <p>
+        &lt;div&gt; adalah wadah untuk mengelompokkan elemen.
+      </p>
+
+<pre class="code">
+&lt;div&gt;
+  &lt;h1&gt;Halo Dunia&lt;/h1&gt;
+  &lt;p&gt;Teks&lt;/p&gt;
+  &lt;button&gt;Klik&lt;/button&gt;
+&lt;/div&gt;
+</pre>
+    </div>
+    <img class="image" src="images/miku.png">
+  </section>
+
+  <!-- Slide 5 -->
+  <section class="slide">
+    <div class="text">
+      <h1>CSS (Tampilan)</h1>
+
+<pre class="code">
+h1 {
+  color: cyan;
+  text-align: center;
+}
+
+button {
+  padding: 10px;
+}
+</pre>
+    </div>
+    <img class="image" src="images/miku2.png">
+  </section>
+
+  <!-- Slide 6 -->
+  <section class="slide">
+    <div class="text">
+      <h1>JavaScript</h1>
+
+<pre class="code">
+button.onclick = function() {
+  alert("Halo Dunia!");
+}
+</pre>
+    </div>
+    <img class="image" src="images/miku2.png">
+  </section>
+
+  <!-- Slide 7 -->
+  <section class="slide">
+    <div class="text">
+      <h1>Terima Kasih</h1>
+      <p>
+        Sampai Jumpa Di Materi Berikut nya<br>
+        Jangan lupa belajar terus untuk perubahan kalian
+      </p>
+    </div>
+    <img class="image" src="images/miku3.png">
+  </section>
+
+</div>
+
+<!-- CONTROLS -->
+<div class="controls hidden">
+  <button onclick="prevSlide()">◀</button>
+  <button onclick="nextSlide()">▶</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
