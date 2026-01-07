@@ -143,3 +143,21 @@ body {
   50% { transform: translateY(-18px); }
   100% { transform: translateY(0); }
 }
+
+/* FIX GAMBAR TIDAK MUNCUL */
+.slide img {
+  position: relative !important;
+  z-index: 99 !important;
+
+  width: auto !important;
+  height: 70vh !important;
+  max-width: 40% !important;
+
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* MATIKAN PEMOTONG */
+.slide {
+  overflow: visible !important;
+}
