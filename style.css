@@ -1,163 +1,187 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
+/* ===============================
+   RESET & BASE
+================================ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Segoe UI", sans-serif;
 }
 
 body {
-  background: radial-gradient(circle at top, #00ffff, #000814);
-  color: white;
+  background: radial-gradient(circle at top, #0ff, #050014, #000);
+  color: #fff;
   overflow: hidden;
 }
 
-/* WELCOME */
+/* ===============================
+   WELCOME SCREEN
+================================ */
 .welcome {
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(135deg, #00ffff, #001);
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #00f6ff, #0b0033);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  z-index: 999;
+  animation: fadeIn 1s ease;
 }
 
 .welcome h1 {
   font-size: 3rem;
-  text-shadow: 0 0 25px cyan;
+  text-align: center;
+  text-shadow: 0 0 20px cyan;
+  margin-bottom: 30px;
 }
 
 .welcome button {
-  margin-top: 30px;
   padding: 15px 35px;
-  font-size: 1.3rem;
-  background: black;
-  color: cyan;
+  font-size: 1.2rem;
   border: none;
-  box-shadow: 0 0 20px cyan;
+  border-radius: 30px;
+  background: cyan;
+  color: #000;
   cursor: pointer;
+  box-shadow: 0 0 25px cyan;
+  transition: 0.3s;
 }
 
-/* SLIDES */
+.welcome button:hover {
+  transform: scale(1.1);
+}
+
+/* ===============================
+   SLIDES
+================================ */
 .slides {
   width: 100vw;
   height: 100vh;
-  position: relative;
-}
-
-.slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  opacity: 0;
-  transform: scale(1.05);
-  transition: 0.8s;
-}
-
-.slide.active {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.text {
-  width: 45%;
-}
-
-.text h1 {
-  font-size: 2.8rem;
-  color: cyan;
-}
-
-.text p, li {
-  font-size: 1.2rem;
-  line-height: 1.8;
-}
-
-/* FIX GAMBAR RASIO 4:5 */
-.image {
-  width: auto;
-  height: 75vh;
-  max-width: 40%;
-  object-fit: contain;
-  animation: float 3s ease-in-out infinite;
-  filter: drop-shadow(0 0 30px cyan);
-}
-
-/* CODE BOX */
-.code {
-  background: rgba(0,255,255,0.1);
-  border-left: 4px solid cyan;
-  padding: 15px;
-  margin-top: 15px;
-  font-family: monospace;
-  color: cyan;
-}
-
-/* CONTROLS */
-.controls {
-  position: absolute;
-  bottom: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.controls button {
-  background: transparent;
-  border: 2px solid cyan;
-  color: cyan;
-  font-size: 1.5rem;
-  padding: 10px 20px;
-  margin: 0 10px;
-}
-
-/* RESPONSIVE HP */
-@media (max-width: 768px) {
-  .slide {
-    flex-direction: column;
-  }
-
-  .text {
-    width: 90%;
-    text-align: center;
-  }
-
-  .image {
-    height: 55vh;
-    max-width: 80%;
-    margin-top: 20px;
-  }
 }
 
 .hidden {
   display: none;
 }
 
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-18px); }
-  100% { transform: translateY(0); }
-}
-
-/* FIX GAMBAR TIDAK MUNCUL */
-.slide img {
-  position: relative !important;
-  z-index: 99 !important;
-
-  width: auto !important;
-  height: 70vh !important;
-  max-width: 40% !important;
-
-  object-fit: contain !important;
-  display: block !important;
-}
-
-/* MATIKAN PEMOTONG */
 .slide {
-  overflow: visible !important;
+  width: 100%;
+  height: 100%;
+  display: none;
+  padding: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  overflow: visible; /* FIX GAMBAR */
+}
+
+.slide.active {
+  display: flex;
+  animation: slideIn 0.8s ease;
+}
+
+/* ===============================
+   TEXT AREA
+================================ */
+.text {
+  width: 55%;
+}
+
+.text h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #00ffff;
+  text-shadow: 0 0 15px #00ffff;
+}
+
+.text p,
+.text li {
+  font-size: 1.3rem;
+  line-height: 1.7;
+}
+
+.text ul {
+  margin-left: 25px;
+}
+
+/* ===============================
+   CODE BLOCK
+================================ */
+.code {
+  background: rgba(0,0,0,0.6);
+  border-left: 4px solid cyan;
+  padding: 15px;
+  margin-top: 20px;
+  font-family: monospace;
+  font-size: 1.1rem;
+  white-space: pre-wrap;
+  box-shadow: 0 0 15px cyan;
+}
+
+/* ===============================
+   IMAGE FIX (RASIO 4:5)
+================================ */
+.slide img,
+.image {
+  display: block;
+  position: relative;
+  z-index: 1000;
+
+  height: 80vh;          /* PENTING UNTUK 4:5 */
+  max-width: 40%;
+  width: auto;
+
+  object-fit: contain;
+  opacity: 1;
+  visibility: visible;
+
+  transform: none;
+  animation: imageFloat 4s ease-in-out infinite;
+}
+
+/* ===============================
+   CONTROLS
+================================ */
+.controls {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 999;
+}
+
+.controls button {
+  background: cyan;
+  border: none;
+  font-size: 1.5rem;
+  padding: 15px;
+  margin: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 20px cyan;
+}
+
+/* ===============================
+   ANIMATIONS
+================================ */
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes imageFloat {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
 }
