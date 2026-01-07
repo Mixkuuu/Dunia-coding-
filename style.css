@@ -1,55 +1,47 @@
 /* ===============================
-   RESET & BASE
+   RESET
 ================================ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-  background: radial-gradient(circle at top, #0ff, #050014, #000);
-  color: #fff;
+  background: #050014;
+  color: #ffffff;
   overflow: hidden;
 }
 
 /* ===============================
-   WELCOME SCREEN
+   WELCOME
 ================================ */
 .welcome {
   position: fixed;
   inset: 0;
-  background: linear-gradient(135deg, #00f6ff, #0b0033);
+  background: linear-gradient(135deg, #0ff, #12002b);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 999;
-  animation: fadeIn 1s ease;
+  z-index: 1000;
 }
 
 .welcome h1 {
-  font-size: 3rem;
+  font-size: 2.8rem;
   text-align: center;
-  text-shadow: 0 0 20px cyan;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .welcome button {
-  padding: 15px 35px;
-  font-size: 1.2rem;
+  padding: 12px 30px;
+  font-size: 1.1rem;
   border: none;
-  border-radius: 30px;
+  border-radius: 25px;
   background: cyan;
   color: #000;
   cursor: pointer;
-  box-shadow: 0 0 25px cyan;
-  transition: 0.3s;
-}
-
-.welcome button:hover {
-  transform: scale(1.1);
 }
 
 /* ===============================
@@ -68,17 +60,19 @@ body {
   width: 100%;
   height: 100%;
   display: none;
-  padding: 60px;
+  padding: 50px 60px;
+
+  /* PPT STYLE */
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 40px;
-  overflow: visible; /* FIX GAMBAR */
+
+  overflow: visible;
 }
 
 .slide.active {
   display: flex;
-  animation: slideIn 0.8s ease;
 }
 
 /* ===============================
@@ -89,16 +83,15 @@ body {
 }
 
 .text h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  color: #00ffff;
-  text-shadow: 0 0 15px #00ffff;
+  font-size: 2.6rem;
+  margin-bottom: 15px;
+  color: cyan;
 }
 
 .text p,
 .text li {
-  font-size: 1.3rem;
-  line-height: 1.7;
+  font-size: 1.25rem;
+  line-height: 1.6;
 }
 
 .text ul {
@@ -109,35 +102,32 @@ body {
    CODE BLOCK
 ================================ */
 .code {
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.5);
   border-left: 4px solid cyan;
   padding: 15px;
-  margin-top: 20px;
+  margin-top: 15px;
   font-family: monospace;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   white-space: pre-wrap;
-  box-shadow: 0 0 15px cyan;
 }
 
 /* ===============================
-   IMAGE FIX (RASIO 4:5)
+   IMAGE (MIKU FIX 4:5)
 ================================ */
 .slide img,
 .image {
   display: block;
-  position: relative;
-  z-index: 1000;
 
-  height: 80vh;          /* PENTING UNTUK 4:5 */
+  height: 80vh;        /* PENTING UNTUK 4:5 */
   max-width: 40%;
   width: auto;
 
   object-fit: contain;
+
   opacity: 1;
   visibility: visible;
 
   transform: none;
-  animation: imageFloat 4s ease-in-out infinite;
 }
 
 /* ===============================
@@ -145,43 +135,38 @@ body {
 ================================ */
 .controls {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 999;
+  bottom: 25px;
+  right: 25px;
+  z-index: 500;
 }
 
 .controls button {
-  background: cyan;
-  border: none;
-  font-size: 1.5rem;
-  padding: 15px;
-  margin: 5px;
+  font-size: 1.4rem;
+  padding: 12px;
+  margin-left: 8px;
   border-radius: 50%;
+  border: none;
   cursor: pointer;
-  box-shadow: 0 0 20px cyan;
+  background: cyan;
+  color: #000;
 }
 
 /* ===============================
-   ANIMATIONS
+   RESPONSIVE (HP AMAN)
 ================================ */
-@keyframes fadeIn {
-  from { opacity: 0 }
-  to { opacity: 1 }
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(100px);
+@media (max-width: 768px) {
+  .slide {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
   }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
 
-@keyframes imageFloat {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-15px); }
-  100% { transform: translateY(0); }
+  .text {
+    width: 100%;
+  }
+
+  .slide img {
+    max-width: 80%;
+    height: 60vh;
+  }
 }
