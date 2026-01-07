@@ -1,0 +1,28 @@
+let current = 0;
+const slides = document.querySelectorAll(".slide");
+
+function startPresentation() {
+  document.getElementById("welcome").style.display = "none";
+  document.querySelector(".slides").classList.remove("hidden");
+  document.querySelector(".controls").classList.remove("hidden");
+}
+
+function showSlide(index) {
+  slides.forEach(s => s.classList.remove("active"));
+  slides[index].classList.add("active");
+}
+
+function nextSlide() {
+  current = (current + 1) % slides.length;
+  showSlide(current);
+}
+
+function prevSlide() {
+  current = (current - 1 + slides.length) % slides.length;
+  showSlide(current);
+}
+
+document.addEventListener("keydown", e => {
+  if (e.key === "ArrowRight") nextSlide();
+  if (e.key === "ArrowLeft") prevSlide();
+});
